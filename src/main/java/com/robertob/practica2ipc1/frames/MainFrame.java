@@ -19,6 +19,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     StoreFrame storeFrame = new StoreFrame();
     ExitGameConfirmFrame exitConfirmFrame = new ExitGameConfirmFrame();
+    AboutFrame aboutFrame = new AboutFrame();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -271,7 +272,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_exitGameMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        aboutFrame.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
