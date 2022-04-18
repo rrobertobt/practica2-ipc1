@@ -4,11 +4,14 @@
  */
 package com.robertob.practica2ipc1.frames;
 
+import com.robertob.practica2ipc1.engine.MainEngine;
+
 /**
  *
  * @author robertob
  */
 public class WelcomeFrame extends javax.swing.JFrame {
+    
     
     /**
      * Creates new form WelcomeFrame

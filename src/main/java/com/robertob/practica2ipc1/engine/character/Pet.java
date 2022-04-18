@@ -4,14 +4,24 @@ public class Pet {
     
     private String name;
     private String nick;
-    private int level;
-    private int sickness;
-    private int foodRequests;
-    private int maxFoodRequests;
+    private int level = 1;
+    private int sickness = 0;
+    private int foodRequests = 0;
+    private int maxFoodRequests = 5;
     private int dirtiness;
     private int walkRequests;
-    private int age;
+    private boolean isAlive = true;
 
+    public Pet(String nick) {
+        this.nick = nick;
+    }  
+    
+    private void isAlive(){
+        if(foodRequests == maxFoodRequests || sickness == 6){
+            isAlive = false;
+        }
+    }
+    
     public String getName() {
         return name;
     }
@@ -76,13 +86,8 @@ public class Pet {
         this.walkRequests = walkRequests;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
+    
+    
     
     
 }
