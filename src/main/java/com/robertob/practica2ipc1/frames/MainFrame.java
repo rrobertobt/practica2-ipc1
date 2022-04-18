@@ -5,7 +5,10 @@
 package com.robertob.practica2ipc1.frames;
 
 import com.robertob.practica2ipc1.engine.*;
+import com.robertob.practica2ipc1.engine.character.*;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     StoreFrame storeFrame = new StoreFrame(mainEngine, this);
     ExitGameConfirmFrame exitConfirmFrame = new ExitGameConfirmFrame();
     AboutFrame aboutFrame = new AboutFrame();
+    DefaultListModel petsListModel = new DefaultListModel();
     
     public MainFrame() {
         initComponents();
@@ -38,16 +42,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         myPetsTitle = new javax.swing.JLabel();
         petsCount = new javax.swing.JLabel();
-        pet1Btn = new javax.swing.JButton();
-        pet2Btn = new javax.swing.JButton();
-        pet3Btn = new javax.swing.JButton();
-        pet4Btn = new javax.swing.JButton();
-        pet5Btn = new javax.swing.JButton();
-        pet6Btn = new javax.swing.JButton();
-        pet7Btn = new javax.swing.JButton();
-        pet8Btn = new javax.swing.JButton();
-        pet9Btn = new javax.swing.JButton();
-        pet10Btn = new javax.swing.JButton();
         storeBtn = new javax.swing.JButton();
         petStatsTitle = new javax.swing.JLabel();
         typeTitle = new javax.swing.JLabel();
@@ -64,9 +58,17 @@ public class MainFrame extends javax.swing.JFrame {
         dirtinessLabel = new javax.swing.JLabel();
         walkRequestsLabel = new javax.swing.JLabel();
         cleanBtn = new javax.swing.JButton();
-        cureBtn = new javax.swing.JButton();
         walkBtn = new javax.swing.JButton();
         reviveBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        maxFoodRequestsLabel = new javax.swing.JLabel();
+        sicknessTitle = new javax.swing.JLabel();
+        sicknessLabel = new javax.swing.JLabel();
+        petStatusLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        petList = new javax.swing.JList<>();
         mainMenuBar = new javax.swing.JMenuBar();
         gameMenu = new javax.swing.JMenu();
         storeMenuItem = new javax.swing.JMenuItem();
@@ -85,116 +87,6 @@ public class MainFrame extends javax.swing.JFrame {
         myPetsTitle.setText("MIS MASCOTAS");
 
         petsCount.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-
-        pet1Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet1Btn.setText("Sin Mascota");
-        pet1Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet1Btn.setContentAreaFilled(false);
-        pet1Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet1Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet1BtnActionPerformed(evt);
-            }
-        });
-
-        pet2Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet2Btn.setText("Sin Mascota");
-        pet2Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet2Btn.setContentAreaFilled(false);
-        pet2Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet2Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet2BtnActionPerformed(evt);
-            }
-        });
-
-        pet3Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet3Btn.setText("Sin Mascota");
-        pet3Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet3Btn.setContentAreaFilled(false);
-        pet3Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet3Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet3BtnActionPerformed(evt);
-            }
-        });
-
-        pet4Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet4Btn.setText("Sin Mascota");
-        pet4Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet4Btn.setContentAreaFilled(false);
-        pet4Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet4Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet4BtnActionPerformed(evt);
-            }
-        });
-
-        pet5Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet5Btn.setText("Sin Mascota");
-        pet5Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet5Btn.setContentAreaFilled(false);
-        pet5Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet5Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet5BtnActionPerformed(evt);
-            }
-        });
-
-        pet6Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet6Btn.setText("Sin Mascota");
-        pet6Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet6Btn.setContentAreaFilled(false);
-        pet6Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet6Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet6BtnActionPerformed(evt);
-            }
-        });
-
-        pet7Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet7Btn.setText("Sin Mascota");
-        pet7Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet7Btn.setContentAreaFilled(false);
-        pet7Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet7Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet7BtnActionPerformed(evt);
-            }
-        });
-
-        pet8Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet8Btn.setText("Sin Mascota");
-        pet8Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet8Btn.setContentAreaFilled(false);
-        pet8Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet8Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet8BtnActionPerformed(evt);
-            }
-        });
-
-        pet9Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet9Btn.setText("Sin Mascota");
-        pet9Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet9Btn.setContentAreaFilled(false);
-        pet9Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet9Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet9BtnActionPerformed(evt);
-            }
-        });
-
-        pet10Btn.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        pet10Btn.setText("Sin Mascota");
-        pet10Btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
-        pet10Btn.setContentAreaFilled(false);
-        pet10Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pet10Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pet10BtnActionPerformed(evt);
-            }
-        });
 
         storeBtn.setBackground(new java.awt.Color(102, 102, 102));
         storeBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
@@ -230,26 +122,31 @@ public class MainFrame extends javax.swing.JFrame {
         walkRequestsTitle.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
         walkRequestsTitle.setText("Veces que ha pedido paseo:");
 
-        petImage.setText("imagen");
         petImage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 2, true));
         petImage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         typeLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        typeLabel.setText("---");
         typeLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         nickLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        nickLabel.setText("---");
         nickLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         levelLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        levelLabel.setText("---");
         levelLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         foodRequestsLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        foodRequestsLabel.setText("---");
         foodRequestsLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         dirtinessLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        dirtinessLabel.setText("---");
         dirtinessLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         walkRequestsLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        walkRequestsLabel.setText("---");
         walkRequestsLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         cleanBtn.setBackground(new java.awt.Color(0, 102, 102));
@@ -264,14 +161,6 @@ public class MainFrame extends javax.swing.JFrame {
                 cleanBtnActionPerformed(evt);
             }
         });
-
-        cureBtn.setBackground(new java.awt.Color(0, 102, 102));
-        cureBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
-        cureBtn.setForeground(new java.awt.Color(255, 255, 255));
-        cureBtn.setText("CURAR");
-        cureBtn.setBorderPainted(false);
-        cureBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cureBtn.setEnabled(false);
 
         walkBtn.setBackground(new java.awt.Color(0, 102, 102));
         walkBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
@@ -288,6 +177,37 @@ public class MainFrame extends javax.swing.JFrame {
         reviveBtn.setBorderPainted(false);
         reviveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reviveBtn.setEnabled(false);
+
+        jLabel1.setFont(new java.awt.Font("Cantarell", 0, 19)); // NOI18N
+        jLabel1.setText("Presiona una de las mascotas para");
+
+        jLabel2.setFont(new java.awt.Font("Cantarell", 0, 19)); // NOI18N
+        jLabel2.setText("ver su estado");
+
+        jLabel3.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        jLabel3.setText("/");
+
+        maxFoodRequestsLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        maxFoodRequestsLabel.setText("---");
+        maxFoodRequestsLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        sicknessTitle.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
+        sicknessTitle.setText("Enfermedades:");
+
+        sicknessLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        sicknessLabel.setText("---");
+        sicknessLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        petStatusLabel.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+
+        petList.setFont(new java.awt.Font("Cantarell", 1, 23)); // NOI18N
+        petList.setModel(petsListModel);
+        petList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                petListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(petList);
 
         gameMenu.setText("Juego");
 
@@ -346,18 +266,23 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(petStatsTitle)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(myPetsTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(petsCount)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(storeBtn)
                         .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(petStatsTitle)
+                            .addComponent(jLabel2))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(typeTitle)
@@ -374,49 +299,41 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(foodRequestsTitle)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(foodRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(foodRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(maxFoodRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dirtinessTitle)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(dirtinessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(walkRequestsTitle)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(walkRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                        .addComponent(petImage, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cleanBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cureBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(walkBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reviveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(83, 83, 83))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(sicknessTitle)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(sicknessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(walkRequestsTitle)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(walkRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(petImage, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cleanBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(walkBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(reviveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(83, 83, 83))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(petStatusLabel)
+                                .addGap(266, 266, 266))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pet1Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet6Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet7Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet8Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet9Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet10Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(pet2Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet3Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet4Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pet5Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(135, 135, 135))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,21 +344,13 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(myPetsTitle)
                         .addComponent(storeBtn))
                     .addComponent(petsCount))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pet3Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet4Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet5Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet2Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet1Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pet6Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet7Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet8Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet9Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet10Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(petStatsTitle)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -450,21 +359,23 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(typeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(typeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nickTitle)
-                            .addComponent(nickLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nickLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nickTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(levelTitle)
-                            .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(levelLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(levelTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(foodRequestsTitle)
-                            .addComponent(foodRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(foodRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(maxFoodRequestsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dirtinessTitle)
-                            .addComponent(dirtinessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dirtinessLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dirtinessTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(walkRequestsTitle)
@@ -475,60 +386,32 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cleanBtn)
                                 .addGap(18, 18, 18)
-                                .addComponent(cureBtn)
-                                .addGap(18, 18, 18)
                                 .addComponent(walkBtn)
                                 .addGap(18, 18, 18)
                                 .addComponent(reviveBtn))
                             .addComponent(petImage, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(57, 57, 57))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(petStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(sicknessTitle)
+                        .addComponent(sicknessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    protected void updateNickOnBtns(){
-        if(mainEngine.player.getPlayerPets(0) != null){
-            pet1Btn.setText(mainEngine.player.getPlayerPets(0).getNick());
-            pet1Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
+    protected void updateNickOnList(){
+        
+        this.petsListModel.removeAllElements();
+        for (int i = 0; i < 10; i++) {
+            if(mainEngine.player.getPlayerPets(i) != null){
+                petsListModel.addElement(mainEngine.player.getPlayerPets(i).getNick());
+            };
         }
-        if(mainEngine.player.getPlayerPets(1) != null){
-            pet2Btn.setText(mainEngine.player.getPlayerPets(1).getNick());
-            pet2Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(2) != null){
-            pet3Btn.setText(mainEngine.player.getPlayerPets(2).getNick());
-            pet3Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(3) != null){
-            pet4Btn.setText(mainEngine.player.getPlayerPets(3).getNick());
-            pet4Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(4) != null){
-            pet5Btn.setText(mainEngine.player.getPlayerPets(4).getNick());
-            pet5Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(5) != null){
-            pet6Btn.setText(mainEngine.player.getPlayerPets(5).getNick());
-            pet6Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(6) != null){
-            pet7Btn.setText(mainEngine.player.getPlayerPets(6).getNick());
-            pet7Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(7) != null){
-            pet8Btn.setText(mainEngine.player.getPlayerPets(7).getNick());
-            pet8Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(8) != null){
-            pet9Btn.setText(mainEngine.player.getPlayerPets(8).getNick());
-            pet9Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-        if(mainEngine.player.getPlayerPets(9) != null){
-            pet10Btn.setText(mainEngine.player.getPlayerPets(9).getNick());
-            pet10Btn.setFont(new java.awt.Font("Cantarell", 1, 20));
-        }
-    
+        this.petList.setModel(petsListModel);        
+       
     }
     
     private void storeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeBtnActionPerformed
@@ -551,56 +434,45 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cleanBtnActionPerformed
 
-    private void pet1BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet1BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet1BtnActionPerformed
+    private void petListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_petListMouseClicked
+        Pet selectedPet = mainEngine.player.getPlayerPets(petList.getSelectedIndex());
+        setStatsText(selectedPet);
+        enableBtns(selectedPet);
+    }//GEN-LAST:event_petListMouseClicked
 
-    private void pet2BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet2BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet2BtnActionPerformed
-
-    private void pet3BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet3BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet3BtnActionPerformed
-
-    private void pet4BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet4BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet4BtnActionPerformed
-
-    private void pet5BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet5BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet5BtnActionPerformed
-
-    private void pet6BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet6BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet6BtnActionPerformed
-
-    private void pet7BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet7BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet7BtnActionPerformed
-
-    private void pet8BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet8BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet8BtnActionPerformed
-
-    private void pet9BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet9BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet9BtnActionPerformed
-
-    private void pet10BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pet10BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pet10BtnActionPerformed
-
-    public JButton getPet1Btn() {
-        return pet1Btn;
+    private void setStatsText(Pet pet){
+        typeLabel.setText(pet.getType());
+        nickLabel.setText(pet.getNick());
+        levelLabel.setText(String.valueOf(pet.getLevel()));
+        foodRequestsLabel.setText(String.valueOf(pet.getFoodRequests()));
+        maxFoodRequestsLabel.setText(String.valueOf(pet.getMaxFoodRequests()));
+        dirtinessLabel.setText(String.valueOf(pet.getDirtiness()));
+        walkRequestsLabel.setText(String.valueOf(pet.getWalkRequests()));
+        sicknessLabel.setText(String.valueOf(pet.getSickness()));
+        if (pet.isPetAlive()){
+            petStatusLabel.setText("Mascota viva");
+        } else if(!pet.isPetAlive()){
+            petStatusLabel.setText("Mascota muerta");
+        }
+   
     }
     
+    private void enableBtns(Pet pet){
+        if(pet.isPetAlive()){
+            cleanBtn.setEnabled(true);
+            walkBtn.setEnabled(true);
+            reviveBtn.setEnabled(false);
+        } else if (!pet.isPetAlive()){
+            cleanBtn.setEnabled(false);
+            walkBtn.setEnabled(false);
+            reviveBtn.setEnabled(true);
+        }
     
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu aboutMenu;
     private javax.swing.JButton cleanBtn;
-    private javax.swing.JButton cureBtn;
     private javax.swing.JLabel dirtinessLabel;
     private javax.swing.JLabel dirtinessTitle;
     private javax.swing.JMenuItem exitGameMenuItem;
@@ -609,29 +481,28 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu gameMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem howPlayMenuItem;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel levelLabel;
     private javax.swing.JLabel levelTitle;
     private javax.swing.JMenuBar mainMenuBar;
+    private javax.swing.JLabel maxFoodRequestsLabel;
     private javax.swing.JLabel myPetsTitle;
     private javax.swing.JLabel nickLabel;
     private javax.swing.JLabel nickTitle;
     private javax.swing.JMenuItem openAboutMenuItem;
-    private javax.swing.JButton pet10Btn;
-    private javax.swing.JButton pet1Btn;
-    private javax.swing.JButton pet2Btn;
-    private javax.swing.JButton pet3Btn;
-    private javax.swing.JButton pet4Btn;
-    private javax.swing.JButton pet5Btn;
-    private javax.swing.JButton pet6Btn;
-    private javax.swing.JButton pet7Btn;
-    private javax.swing.JButton pet8Btn;
-    private javax.swing.JButton pet9Btn;
     private javax.swing.JLabel petImage;
+    private javax.swing.JList<String> petList;
     private javax.swing.JLabel petStatsTitle;
+    private javax.swing.JLabel petStatusLabel;
     private javax.swing.JLabel petsCount;
     private javax.swing.JMenu reportsMenu;
     private javax.swing.JButton reviveBtn;
+    private javax.swing.JLabel sicknessLabel;
+    private javax.swing.JLabel sicknessTitle;
     private javax.swing.JButton storeBtn;
     private javax.swing.JMenuItem storeMenuItem;
     private javax.swing.JLabel typeLabel;

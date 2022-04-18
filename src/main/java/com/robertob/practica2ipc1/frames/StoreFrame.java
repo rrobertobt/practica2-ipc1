@@ -43,7 +43,7 @@ public class StoreFrame extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pokemonTab = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        typeComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -94,11 +94,11 @@ public class StoreFrame extends javax.swing.JFrame {
 
         jTabbedPane1.setFont(new java.awt.Font("Cantarell", 2, 20)); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        typeComboBox.setFont(new java.awt.Font("Cantarell", 0, 20)); // NOI18N
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate" }));
+        typeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                typeComboBoxActionPerformed(evt);
             }
         });
 
@@ -156,7 +156,7 @@ public class StoreFrame extends javax.swing.JFrame {
                         .addGroup(pokemonTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel6)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                         .addGroup(pokemonTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -191,7 +191,7 @@ public class StoreFrame extends javax.swing.JFrame {
                         .addComponent(buyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pokemonTabLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -534,9 +534,9 @@ public class StoreFrame extends javax.swing.JFrame {
         petSelectorFrame.showItemLabel("Vitamina");
     }//GEN-LAST:event_vitaminBtnActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void typeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_typeComboBoxActionPerformed
 
     private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
         if(mainEngine.player.getCurrentIndex() == 9){
@@ -546,10 +546,9 @@ public class StoreFrame extends javax.swing.JFrame {
         } else {
             int confirmation = JOptionPane.showOptionDialog(this, "¿Estas seguro que quieres comprar este pokemon?", "Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,confirmationOptions,confirmationOptions[0]);
             if(confirmation == JOptionPane.YES_OPTION){
-                mainEngine.player.setPlayerPets(new Pet(nickTextField.getText()));
-                mainEngine.player.lowerMoney(50);
+                mainEngine.buyPet(typeComboBox.getSelectedItem().toString(), nickTextField.getText());
                 playerMoneyLabel.setText(String.valueOf(mainEngine.player.getMoney()));
-                mainFrame.updateNickOnBtns();
+                mainFrame.updateNickOnList();
             }
         }  
 
@@ -573,7 +572,6 @@ public class StoreFrame extends javax.swing.JFrame {
     private javax.swing.JPanel foodTab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -600,6 +598,7 @@ public class StoreFrame extends javax.swing.JFrame {
     private javax.swing.JLabel playerMoneyLabel;
     private javax.swing.JPanel pokemonTab;
     private javax.swing.JLabel storeTitle;
+    private javax.swing.JComboBox<String> typeComboBox;
     private javax.swing.JButton vitaminBtn;
     private javax.swing.JButton wafflesBtn;
     // End of variables declaration//GEN-END:variables

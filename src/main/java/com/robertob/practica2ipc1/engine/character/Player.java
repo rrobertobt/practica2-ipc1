@@ -49,4 +49,8 @@ public class Player {
         return this.money >= 50;
     }
     
+    public boolean playerCanRevive(){
+        return this.money >= 15;
+    }
+    
 }

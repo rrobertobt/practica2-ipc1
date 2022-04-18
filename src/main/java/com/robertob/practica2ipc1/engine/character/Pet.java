@@ -1,33 +1,42 @@
 package com.robertob.practica2ipc1.engine.character;
 
-public class Pet {
+public class Pet extends Thread{
     
-    private String name;
+    private String type;
     private String nick;
     private int level = 1;
     private int sickness = 0;
     private int foodRequests = 0;
     private int maxFoodRequests = 5;
-    private int dirtiness;
-    private int walkRequests;
-    private boolean isAlive = true;
+    private int dirtiness = 0;
+    private int walkRequests = 0;
+    private boolean petIsAlive = true;
+    private int revivePrice = ((5*level)+10);
 
-    public Pet(String nick) {
+    public Pet(String type, String nick) {
+        this.type = type;
         this.nick = nick;
     }  
     
-    private void isAlive(){
+    private void setPetIsAlive(){
         if(foodRequests == maxFoodRequests || sickness == 6){
-            isAlive = false;
+            petIsAlive = false;
         }
     }
     
-    public String getName() {
-        return name;
+    public boolean isPetAlive(){
+        return petIsAlive;
+    }
+    
+    public void revive(){
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getNick() {
@@ -86,8 +95,4 @@ public class Pet {
         this.walkRequests = walkRequests;
     }
 
-    
-    
-    
-    
 }
