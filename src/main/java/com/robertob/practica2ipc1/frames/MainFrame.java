@@ -495,7 +495,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void reviveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reviveBtnActionPerformed
         if(mainEngine.player.playerCanRevive()){
-            int confirmationRevive = JOptionPane.showOptionDialog(this, "¿Estas seguro que quieres revivr esta mascota?", "Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,confirmationOptions,confirmationOptions[0]);
+            int confirmationRevive = JOptionPane.showOptionDialog(this, "¿Estas seguro que quieres revivr esta mascota por "+ selectedPet.getRevivePrice() +" monedas?", "Confirmacion",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,confirmationOptions,confirmationOptions[0]);
             if (confirmationRevive == JOptionPane.YES_OPTION){
                 selectedPet.setPetAlive(true);
                 selectedPet.setFoodRequests(0);
