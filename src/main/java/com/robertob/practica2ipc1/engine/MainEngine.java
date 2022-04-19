@@ -14,8 +14,6 @@ public class MainEngine {
        player.lowerMoney(50);
    }
    
-   
-   
    public void startMainGame(){
        new WelcomeFrame().setVisible(true);
    }
