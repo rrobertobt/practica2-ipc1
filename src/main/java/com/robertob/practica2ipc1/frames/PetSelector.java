@@ -4,17 +4,25 @@
  */
 package com.robertob.practica2ipc1.frames;
 
+import com.robertob.practica2ipc1.engine.consumables.*;
+import com.robertob.practica2ipc1.engine.MainEngine;
+import com.robertob.practica2ipc1.engine.character.*;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author robertob
  */
 public class PetSelector extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PetSelector
-     */
-    public PetSelector() {
+    MainEngine mainEngine;
+    DefaultListModel petsListModel = new DefaultListModel();
+    Pet selectedPet;
+    String itemName;
+    
+    public PetSelector(MainEngine mainEngine) {
         initComponents();
+        this.mainEngine = mainEngine;
     }
 
     /**
@@ -29,16 +37,9 @@ public class PetSelector extends javax.swing.JFrame {
         selectorTitle = new javax.swing.JLabel();
         itemNameSelector = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
-        pet1Btn = new javax.swing.JButton();
-        pet2Btn = new javax.swing.JButton();
-        pet3Btn = new javax.swing.JButton();
-        pet4Btn = new javax.swing.JButton();
-        pet5Btn = new javax.swing.JButton();
-        pet6Btn = new javax.swing.JButton();
-        pet7Btn = new javax.swing.JButton();
-        pet8Btn = new javax.swing.JButton();
-        pet9Btn = new javax.swing.JButton();
-        pet10Btn = new javax.swing.JButton();
+        giveBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        petSelectorList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -47,6 +48,7 @@ public class PetSelector extends javax.swing.JFrame {
         selectorTitle.setText("¿A qué mascota quieres darle: ");
 
         itemNameSelector.setFont(new java.awt.Font("Cantarell", 1, 22)); // NOI18N
+        itemNameSelector.setText(" ");
 
         cancelBtn.setBackground(new java.awt.Color(102, 102, 102));
         cancelBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
@@ -61,142 +63,136 @@ public class PetSelector extends javax.swing.JFrame {
             }
         });
 
-        pet1Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet1Btn.setText("jButton1");
-        pet1Btn.setBorderPainted(false);
-        pet1Btn.setContentAreaFilled(false);
-        pet1Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        giveBtn.setBackground(new java.awt.Color(51, 255, 204));
+        giveBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        giveBtn.setForeground(new java.awt.Color(255, 255, 255));
+        giveBtn.setText("DAR OBJETO");
+        giveBtn.setBorderPainted(false);
+        giveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        giveBtn.setEnabled(false);
+        giveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giveBtnActionPerformed(evt);
+            }
+        });
 
-        pet2Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet2Btn.setText("jButton1");
-        pet2Btn.setBorderPainted(false);
-        pet2Btn.setContentAreaFilled(false);
-        pet2Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet3Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet3Btn.setText("jButton1");
-        pet3Btn.setBorderPainted(false);
-        pet3Btn.setContentAreaFilled(false);
-        pet3Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet4Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet4Btn.setText("jButton1");
-        pet4Btn.setBorderPainted(false);
-        pet4Btn.setContentAreaFilled(false);
-        pet4Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet5Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet5Btn.setText("jButton1");
-        pet5Btn.setBorderPainted(false);
-        pet5Btn.setContentAreaFilled(false);
-        pet5Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet6Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet6Btn.setText("jButton1");
-        pet6Btn.setBorderPainted(false);
-        pet6Btn.setContentAreaFilled(false);
-        pet6Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet7Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet7Btn.setText("jButton1");
-        pet7Btn.setBorderPainted(false);
-        pet7Btn.setContentAreaFilled(false);
-        pet7Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet8Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet8Btn.setText("jButton1");
-        pet8Btn.setBorderPainted(false);
-        pet8Btn.setContentAreaFilled(false);
-        pet8Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet9Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet9Btn.setText("jButton1");
-        pet9Btn.setBorderPainted(false);
-        pet9Btn.setContentAreaFilled(false);
-        pet9Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        pet10Btn.setFont(new java.awt.Font("Cantarell", 0, 21)); // NOI18N
-        pet10Btn.setText("jButton1");
-        pet10Btn.setBorderPainted(false);
-        pet10Btn.setContentAreaFilled(false);
-        pet10Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        petSelectorList.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
+        petSelectorList.setModel(petsListModel);
+        petSelectorList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                petSelectorListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(petSelectorList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(479, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addComponent(cancelBtn)
-                .addGap(39, 39, 39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(giveBtn)
+                .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pet6Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet7Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet8Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet9Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet10Btn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pet1Btn)
-                                .addGap(12, 12, 12)
-                                .addComponent(pet2Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet3Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet4Btn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pet5Btn))))
+                        .addGap(69, 69, 69)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(122, 122, 122)
                         .addComponent(selectorTitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(itemNameSelector)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(itemNameSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectorTitle)
-                    .addComponent(itemNameSelector))
-                .addGap(18, 18, 18)
+                    .addComponent(itemNameSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pet1Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet3Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet4Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet5Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet2Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pet6Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet7Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet8Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet9Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pet10Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(cancelBtn)
-                .addGap(30, 30, 30))
+                    .addComponent(cancelBtn)
+                    .addComponent(giveBtn))
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    protected void updateNickOnList(){
+        
+        this.petsListModel.removeAllElements();
+        for (int i = 0; i < 10; i++) {
+            if(mainEngine.player.getPlayerPets(i) != null){
+                petsListModel.addElement(mainEngine.player.getPlayerPets(i).getNick());
+            };
+        }
+        this.petSelectorList.setModel(petsListModel);        
+       
+    }
+    
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
-    public void showItemLabel(String itemName){
+    private void giveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giveBtnActionPerformed
         
+        switch (itemName) {
+            case "Manzana":
+                Food manzana = new Apple();
+                manzana.boost(selectedPet);
+                mainEngine.player.lowerMoney(manzana.getPrice());
+                break;
+            case "Cereal":
+                Food cereal = new Cereal();
+                cereal.boost(selectedPet);
+                mainEngine.player.lowerMoney(cereal.getPrice());
+                break;
+            case "Waffles":
+                Food waffle = new Waffle();
+                waffle.boost(selectedPet);
+                mainEngine.player.lowerMoney(waffle.getPrice());
+                break;
+            case "Vitamina":
+                Med vitamin = new Vitamin();
+                vitamin.boost(selectedPet);
+                mainEngine.player.lowerMoney(vitamin.getPrice());
+                break;
+            case "Analgesico":
+                Med analgesic = new Analgesic();
+                analgesic.boost(selectedPet);
+                mainEngine.player.lowerMoney(analgesic.getPrice());
+                break;
+            case "Antibiotico":
+                System.out.println("vitamina");
+                break;
+        }
+        
+        this.dispose();
+    }//GEN-LAST:event_giveBtnActionPerformed
+
+    private void petSelectorListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_petSelectorListMouseClicked
+        try {
+            selectedPet = mainEngine.player.getPlayerPets(petSelectorList.getSelectedIndex());
+            giveBtn.setEnabled(true);
+        } catch (ArrayIndexOutOfBoundsException aioobe) {
+            System.out.println("No se selecciono mascota");
+        }
+        
+        
+    }//GEN-LAST:event_petSelectorListMouseClicked
+
+    public void showItemLabel(String itemName){
         itemNameSelector.setText(itemName);
+        giveBtn.setText(("DAR "+itemName.toUpperCase()));
+        this.itemName = itemName;
     
     }
     
@@ -207,17 +203,10 @@ public class PetSelector extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JButton giveBtn;
     private javax.swing.JLabel itemNameSelector;
-    private javax.swing.JButton pet10Btn;
-    private javax.swing.JButton pet1Btn;
-    private javax.swing.JButton pet2Btn;
-    private javax.swing.JButton pet3Btn;
-    private javax.swing.JButton pet4Btn;
-    private javax.swing.JButton pet5Btn;
-    private javax.swing.JButton pet6Btn;
-    private javax.swing.JButton pet7Btn;
-    private javax.swing.JButton pet8Btn;
-    private javax.swing.JButton pet9Btn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> petSelectorList;
     private javax.swing.JLabel selectorTitle;
     // End of variables declaration//GEN-END:variables
 }

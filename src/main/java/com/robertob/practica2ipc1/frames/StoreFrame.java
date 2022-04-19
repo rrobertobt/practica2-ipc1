@@ -5,7 +5,9 @@
 package com.robertob.practica2ipc1.frames;
 
 import com.robertob.practica2ipc1.engine.*;
+import com.robertob.practica2ipc1.engine.consumables.*;
 import com.robertob.practica2ipc1.engine.character.*;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +19,7 @@ public class StoreFrame extends javax.swing.JFrame {
     
     final MainFrame mainFrame;
     final MainEngine mainEngine;
-    PetSelector petSelectorFrame = new PetSelector();
+    PetSelector petSelectorFrame;
     String[] confirmationOptions = {"Si","No"};
     
     /**
@@ -27,6 +29,7 @@ public class StoreFrame extends javax.swing.JFrame {
         initComponents();
         this.mainFrame = mainFrame;
         this.mainEngine = mainEngine;
+        this.petSelectorFrame = new PetSelector(this.mainEngine);
         playerMoneyLabel.setText(String.valueOf(mainEngine.player.getMoney()));
     }
     
@@ -48,7 +51,7 @@ public class StoreFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        buyBtn = new javax.swing.JButton();
+        buyPetBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         nickTextField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -114,16 +117,16 @@ public class StoreFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Cantarell", 0, 19)); // NOI18N
         jLabel8.setText("confirmar la compra");
 
-        buyBtn.setBackground(new java.awt.Color(0, 255, 204));
-        buyBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
-        buyBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/robertob/practica2ipc1/images/basket.png"))); // NOI18N
-        buyBtn.setText(" COMPRAR");
-        buyBtn.setBorderPainted(false);
-        buyBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buyBtn.setEnabled(false);
-        buyBtn.addActionListener(new java.awt.event.ActionListener() {
+        buyPetBtn.setBackground(new java.awt.Color(0, 255, 204));
+        buyPetBtn.setFont(new java.awt.Font("Cantarell", 1, 19)); // NOI18N
+        buyPetBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/robertob/practica2ipc1/images/basket.png"))); // NOI18N
+        buyPetBtn.setText(" COMPRAR");
+        buyPetBtn.setBorderPainted(false);
+        buyPetBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buyPetBtn.setEnabled(false);
+        buyPetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buyBtnActionPerformed(evt);
+                buyPetBtnActionPerformed(evt);
             }
         });
 
@@ -161,7 +164,7 @@ public class StoreFrame extends javax.swing.JFrame {
                         .addGroup(pokemonTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pokemonTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(buyBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buyPetBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(52, 52, 52))
                     .addGroup(pokemonTabLayout.createSequentialGroup()
@@ -188,7 +191,7 @@ public class StoreFrame extends javax.swing.JFrame {
                 .addGroup(pokemonTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pokemonTabLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buyPetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pokemonTabLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -498,16 +501,15 @@ public class StoreFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
+        mainFrame.getPlayerMoneyLabel().setText(String.valueOf(mainEngine.player.getMoney()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cerealBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerealBtnActionPerformed
-        petSelectorFrame.setVisible(true);
-        petSelectorFrame.showItemLabel("Cereal");
+        buyItem("Cereal", 30);
     }//GEN-LAST:event_cerealBtnActionPerformed
 
     private void wafflesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wafflesBtnActionPerformed
-        petSelectorFrame.setVisible(true);
-        petSelectorFrame.showItemLabel("Waffles");
+        buyItem("Waffle", 50);
     }//GEN-LAST:event_wafflesBtnActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -515,30 +517,26 @@ public class StoreFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void appleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appleBtnActionPerformed
-        petSelectorFrame.setVisible(true);
-        petSelectorFrame.showItemLabel("Manzana");
+        buyItem("Manzana", 10);
     }//GEN-LAST:event_appleBtnActionPerformed
 
     private void antibioticsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_antibioticsBtnActionPerformed
-        petSelectorFrame.setVisible(true);
-        petSelectorFrame.showItemLabel("Antibiotico");
+        buyItem("Antibiotico", 80);
     }//GEN-LAST:event_antibioticsBtnActionPerformed
 
     private void analgesicBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analgesicBtnActionPerformed
-        petSelectorFrame.setVisible(true);
-        petSelectorFrame.showItemLabel("Analgesico");
+        buyItem("Analgesico", 50);
     }//GEN-LAST:event_analgesicBtnActionPerformed
 
     private void vitaminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitaminBtnActionPerformed
-        petSelectorFrame.setVisible(true);
-        petSelectorFrame.showItemLabel("Vitamina");
+        buyItem("Vitamina", 20);
     }//GEN-LAST:event_vitaminBtnActionPerformed
 
     private void typeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeComboBoxActionPerformed
 
-    private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
+    private void buyPetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyPetBtnActionPerformed
         if(mainEngine.player.getCurrentIndex() == 9){
             JOptionPane.showMessageDialog(null, "Ya no puedes comprar mas mascotas! Tu lista esta llena","Mascotas llenas",JOptionPane.ERROR_MESSAGE);
         } else if (!mainEngine.player.playerCanBuyPet()){
@@ -552,22 +550,35 @@ public class StoreFrame extends javax.swing.JFrame {
             }
         }  
 
-    }//GEN-LAST:event_buyBtnActionPerformed
+    }//GEN-LAST:event_buyPetBtnActionPerformed
 
     private void nickTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nickTextFieldKeyTyped
         if (!nickTextField.getText().equals("")) {
-            buyBtn.setEnabled(true);
+            buyPetBtn.setEnabled(true);
         } else {
-            buyBtn.setEnabled(false);
+            buyPetBtn.setEnabled(false);
         }
     }//GEN-LAST:event_nickTextFieldKeyTyped
 
+    private void buyItem(String item, int itemPrice){
+        if(!mainEngine.player.playerCanBuyFood(itemPrice)){
+            JOptionPane.showMessageDialog(this, "No tienes suficiente dinero para comprar este item!", "Dinero insuficiente", JOptionPane.ERROR_MESSAGE);
+        } else {
+            petSelectorFrame.setVisible(true);
+            petSelectorFrame.showItemLabel(item);
+            petSelectorFrame.updateNickOnList();
+        }
+    }
+    
+    public JLabel getPlayerMoneyLabel(){
+        return playerMoneyLabel;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton analgesicBtn;
     private javax.swing.JButton antibioticsBtn;
     private javax.swing.JButton appleBtn;
-    private javax.swing.JButton buyBtn;
+    private javax.swing.JButton buyPetBtn;
     private javax.swing.JButton cerealBtn;
     private javax.swing.JPanel foodTab;
     private javax.swing.JButton jButton1;

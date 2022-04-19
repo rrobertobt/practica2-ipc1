@@ -1,6 +1,10 @@
 package com.robertob.practica2ipc1.engine.character;
 
-public class Pet extends Thread{
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+public class Pet implements Runnable{
     
     private String type;
     private String nick;
@@ -12,16 +16,65 @@ public class Pet extends Thread{
     private int walkRequests = 0;
     private boolean petIsAlive = true;
     private int revivePrice = ((5*level)+10);
+    private int age;
+    private int maxAge;
+    private int timesAte = 0;
+    
+    //Intervalos para pedir comida, excretar, paseo
+    private int requestFoodInterval = 4000;
+    public Thread tPet;
 
+    
+    @Override
+    public void run(){
+        while (true) {            
+            askForFood();
+        }
+    }
+    
+    private void askForFood(){
+        if (petIsAlive){
+            try {
+                tPet.sleep(requestFoodInterval);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Pet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "La mascota "+ this.nick +" tiene hambre", "Mascota tiene hambre", JOptionPane.INFORMATION_MESSAGE);
+            this.foodRequests++;
+            checkPetIsAlive();
+        } else if (!petIsAlive){
+            JOptionPane.showMessageDialog(null, "La mascota "+ this.nick +" ha muerto de hambre", "Mascota ha muerto", JOptionPane.INFORMATION_MESSAGE);
+            tPet.suspend();
+        }
+        
+
+            
+    }
+    private void excrete(){
+        if(timesAte == 2){dirtiness = 1;}
+    }
+    
+    public void eat(int newMaxFoodRequests){
+        
+    }
+    
+    private void askForWalk(){}
+    
     public Pet(String type, String nick) {
         this.type = type;
         this.nick = nick;
+        tPet = new Thread(this);
+        tPet.start();
     }  
     
-    private void setPetIsAlive(){
+    private void checkPetIsAlive(){
         if(foodRequests == maxFoodRequests || sickness == 6){
             petIsAlive = false;
         }
+    }
+    
+    public void setPetAlive(boolean status){
+        this.petIsAlive = status;
     }
     
     public boolean isPetAlive(){
@@ -95,4 +148,9 @@ public class Pet extends Thread{
         this.walkRequests = walkRequests;
     }
 
+    public int getRevivePrice() {
+        return revivePrice;
+    }
+
+    
 }

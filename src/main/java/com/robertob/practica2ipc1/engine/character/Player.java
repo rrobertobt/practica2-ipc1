@@ -1,5 +1,7 @@
 package com.robertob.practica2ipc1.engine.character;
 
+import com.robertob.practica2ipc1.engine.consumables.*;
+
 public class Player {
     
     private Pet[] playerPets = new Pet[10];
@@ -49,8 +51,17 @@ public class Player {
         return this.money >= 50;
     }
     
+    public boolean playerCanBuyMed(int medPrice){
+        return this.money >= medPrice;
+    }
+    
+    public boolean playerCanBuyFood(int foodPrice){
+        return this.money >= foodPrice;
+    }
+    
     public boolean playerCanRevive(){
         return this.money >= 15;
     }
+    
     
 }
